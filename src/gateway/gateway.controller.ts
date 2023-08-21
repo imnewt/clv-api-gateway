@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
   Param,
   Patch,
   Post,
@@ -33,7 +34,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -46,7 +48,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -59,7 +62,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -73,7 +77,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -86,7 +91,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -98,7 +104,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -114,7 +121,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -126,7 +134,21 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
+    }
+  }
+
+  @Get('users/:id/permissions')
+  async getUserPermissions(@Param('id') userId: string) {
+    try {
+      const response = await axiosInstance.get(
+        `${API_BASE_URL}/api/users/${userId}/permissions`,
+      );
+      return response.data;
+    } catch (error) {
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -140,7 +162,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -153,7 +176,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -165,7 +189,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -181,7 +206,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -193,7 +219,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 
@@ -207,7 +234,8 @@ export class GatewayController {
       );
       return response.data;
     } catch (error) {
-      return error.response.data;
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
     }
   }
 }
