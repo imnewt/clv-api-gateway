@@ -67,6 +67,36 @@ export class GatewayController {
     }
   }
 
+  @Post('auth/forgot-password')
+  async forgetPassword(@Body() body: { email: string }) {
+    try {
+      const response = await axiosInstance.post(
+        `${API_BASE_URL}/api/auth/forgot-password`,
+        body,
+      );
+      return response.data;
+    } catch (error) {
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
+    }
+  }
+
+  @Post('auth/reset-password')
+  async resetPassword(
+    @Body() body: { resetToken: string; newPassword: string },
+  ) {
+    try {
+      const response = await axiosInstance.post(
+        `${API_BASE_URL}/api/auth/reset-password`,
+        body,
+      );
+      return response.data;
+    } catch (error) {
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
+    }
+  }
+
   // Users
   @Get('users')
   async getUsers(@Query() query) {
