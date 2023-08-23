@@ -20,7 +20,7 @@ import {
   CreateRoleDto,
   UpdateRoleDto,
 } from 'src/dtos';
-import { API_BASE_URL } from 'src/utils/constants';
+import { API_BASE_URL, API_VESSEL_SERVICE_URL } from 'src/utils/constants';
 
 @Controller()
 export class GatewayController {
@@ -89,6 +89,21 @@ export class GatewayController {
       const response = await axiosInstance.post(
         `${API_BASE_URL}/api/auth/reset-password`,
         body,
+      );
+      return response.data;
+    } catch (error) {
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
+    }
+  }
+
+  // Vessels
+  @Get('vessels')
+  async getVessels(@Query() query) {
+    const { searchTerm, pageNumber, pageSize } = query;
+    try {
+      const response = await axiosInstance.get(
+        `${API_VESSEL_SERVICE_URL}/vessels?searchTerm=${searchTerm}&pageNumber=${pageNumber}&pageSize=${pageSize}`,
       );
       return response.data;
     } catch (error) {
