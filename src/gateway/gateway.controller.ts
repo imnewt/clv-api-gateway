@@ -19,6 +19,8 @@ import {
   UpdateUserDto,
   CreateRoleDto,
   UpdateRoleDto,
+  CreateVesselDto,
+  UpdateVesselDto,
 } from 'src/dtos';
 import { API_BASE_URL, API_VESSEL_SERVICE_URL } from 'src/utils/constants';
 
@@ -104,6 +106,63 @@ export class GatewayController {
     try {
       const response = await axiosInstance.get(
         `${API_VESSEL_SERVICE_URL}/vessels?searchTerm=${searchTerm}&pageNumber=${pageNumber}&pageSize=${pageSize}`,
+      );
+      return response.data;
+    } catch (error) {
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
+    }
+  }
+
+  @Post('vessels/create')
+  async createVessel(@Body() createVesselDto: CreateVesselDto) {
+    try {
+      const response = await axiosInstance.post(
+        `${API_VESSEL_SERVICE_URL}/vessels/create`,
+        createVesselDto,
+      );
+      return response.data;
+    } catch (error) {
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
+    }
+  }
+
+  @Get('vessels/:id')
+  async getVesselById(@Param('id') vesselId: string) {
+    try {
+      const response = await axiosInstance.get(
+        `${API_VESSEL_SERVICE_URL}/vessels/${vesselId}`,
+      );
+      return response.data;
+    } catch (error) {
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
+    }
+  }
+
+  @Patch('vessels/:id')
+  async updateVessel(
+    @Param('id') vesselId: string,
+    @Body() updateVesselDto: UpdateVesselDto,
+  ) {
+    try {
+      const response = await axiosInstance.patch(
+        `${API_VESSEL_SERVICE_URL}/vessels/${vesselId}`,
+        updateVesselDto,
+      );
+      return response.data;
+    } catch (error) {
+      const { message, statusCode } = error.response.data;
+      throw new HttpException(message, statusCode);
+    }
+  }
+
+  @Delete('vessels/:id')
+  async deleteVessel(@Param('id') vesselId: string) {
+    try {
+      const response = await axiosInstance.delete(
+        `${API_VESSEL_SERVICE_URL}/vessels/${vesselId}`,
       );
       return response.data;
     } catch (error) {
