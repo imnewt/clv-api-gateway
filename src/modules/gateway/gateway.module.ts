@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 
-import { GatewayController } from './gateway.controller';
+import { GatewayController } from './infrastructure/controllers/gateway.controller';
 
 @Module({
   controllers: [GatewayController],
