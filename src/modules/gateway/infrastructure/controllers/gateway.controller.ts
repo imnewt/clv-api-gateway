@@ -25,8 +25,8 @@ export class GatewayController {
       const response = await axios(axiosConfig);
       res.status(response.status).json(response.data);
     } catch (error) {
-      const { message, statusCode } = error.response.data;
-      throw new HttpException(message, statusCode);
+      const { errors, statusCode } = error.response.data;
+      throw new HttpException(errors, statusCode);
     }
   }
 }
