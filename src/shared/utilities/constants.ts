@@ -5,5 +5,7 @@ export enum SERVICE {
   VESSEL = 'vessel-service',
 }
 
+export const GLOBAL_PREFIX = 'api';
+
 export const API_USER_SERVICE_URL = 'http://localhost:9002';
 export const API_VESSEL_SERVICE_URL = 'http://localhost:9005';

@@ -1,7 +1,8 @@
 import { All, Controller, HttpException, Req, Res } from '@nestjs/common';
 import axios from 'axios';
 
-import { getUrlByServiceName } from 'src/shared/utilities/functions';
+import { getUrlByServiceName } from '@shared/utilities/functions';
+import { GLOBAL_PREFIX } from '@shared/utilities/constants';
 
 @Controller()
 export class GatewayController {
@@ -10,7 +11,8 @@ export class GatewayController {
     const accessToken: string = req.headers['authorization'];
     const serviceName: string = req.url.split('/')[1];
     const baseUrl: string = getUrlByServiceName(serviceName);
-    const requestUrl: string = '/api/' + req.url.split('/').slice(2).join('/');
+    const requestUrl: string =
+      `/${GLOBAL_PREFIX}/` + req.url.split('/').slice(2).join('/');
 
     const axiosConfig = {
       method: req.method,

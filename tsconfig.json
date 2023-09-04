@@ -9,7 +9,15 @@
     "target": "ES2021",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": ".",
+    "paths": {
+      "@gateway/*": [
+        "src/modules/gateway/*"
+      ],
+      "@shared/*": [
+        "src/shared/*"
+      ],
+    },
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
