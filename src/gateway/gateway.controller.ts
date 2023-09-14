@@ -34,7 +34,7 @@ export class GatewayController {
         const userPermissionsResponse = await axios({
           ...axiosConfig,
           method: 'GET',
-          url: `${API_USER_SERVICE_URL}/${GLOBAL_PREFIX}/users/${requestUser.sub}/permissions`,
+          url: `${API_USER_SERVICE_URL}/${GLOBAL_PREFIX}/users/${requestUser.userId}/permissions`,
         });
         axiosConfig.headers['User-Permissions'] = JSON.stringify(
           userPermissionsResponse.data || [],

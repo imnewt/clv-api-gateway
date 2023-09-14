@@ -12,7 +12,7 @@
     "baseUrl": ".",
     "paths": {
       "@gateway/*": [
-        "src/modules/gateway/*"
+        "src/gateway/*"
       ],
       "@shared/*": [
         "src/shared/*"
